@@ -1,0 +1,18 @@
+[
+    {
+        "type": "Directory",
+        "name": "/home/master/applications/akfxmyajgk/public_html/vendor/magento/module-sales",
+        "parent_id": null,
+        "workspaceRoot": "/home/master/applications/akfxmyajgk/public_html/vendor/magento",
+        "workspacePath": "module-sales",
+        "id": "xn9sOwGhgjmN8adt"
+    },
+    {
+        "type": "Directory",
+        "name": "/home/master/applications/akfxmyajgk/public_html/vendor/magento/module-elasticsearch",
+        "parent_id": null,
+        "workspaceRoot": "/home/master/applications/akfxmyajgk/public_html",
+        "workspacePath": "vendor/magento/module-elasticsearch",
+        "id": "7RSTC4QFJeVBLbUv"
+    }
+]

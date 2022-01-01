@@ -1,0 +1,109 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_PromotionBar
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+
+// @codingStandardsIgnoreFile
+use Bss\PromotionBar\Model\Source\Position;
+
+    /**
+     * Block
+     *
+     * @var $block \Bss\PromotionBar\Block\Ajax
+     */
+    $helper = $block->getHelper();
+    if ($helper->getMultiBarConfig() && count($block->getAllPromotionBars()) != 1) {
+        $promotionBars = $block->getAllPromotionBars();
+    } else {
+        $aPromotionBar = $block->getPromotionBar();
+    }
+    $pageBottomPositon = ($block->getBlockPosition() == Position::PAGE_BOTTOM) ? "id='promotionbar_bottomposition'" : "";
+?>
+<?php if(!empty($aPromotionBar) || !empty($promotionBars)): ?>
+<div class="promotionbar_wrapper promotionbar_position_<?php echo $block->getBlockPage() . $block->getBlockPosition() ?>"
+    <?php echo $pageBottomPositon ?>>
+    <?php if (!empty($aPromotionBar)): ?>
+        <div class="a_promotion_bar_custom"
+             id="promotion_bar_id_<?php echo $aPromotionBar['bar_id'] ?>"
+             style="background-color: <?php echo $block->checkColorHex($aPromotionBar['bar_background']) ?>;
+             <?php echo (!empty($aPromotionBar['bar_height'])) ? "min-height: " . $aPromotionBar['bar_height'] . "px" : "min-height: 40px"; ?>
+                     ">
+            <div class="promotion_bar_content">
+                <?php echo $block->filterContent($aPromotionBar['bar_content']) ?>
+            </div>
+        </div>
+    <?php if ($helper->getCustomerCloseConfig()): ?>
+        <span class="promotion_bar_close"
+              id="promotion_bar_close_<?php echo $block->getBlockPage() . $block->getBlockPosition() ?>"></span>
+    <?php endif ?>
+        <script type="text/x-magento-init">
+        {
+        "*":
+            {
+                "Bss_PromotionBar/js/removepromotionbar": {
+                    "timeOut": <?php echo $aPromotionBar['hide_after'] * 1000 ?>,
+                    "position": <?php echo $block->getBlockPosition() ?>,
+                    <?php if (!empty($block->getEndDateSession())): ?>
+                        "endDate": <?php echo $block->getEndDateSession() ?>,
+                    <?php endif; ?>
+                    "page": <?php echo $block->getBlockPage() ?>
+                }
+            }
+        }
+
+        </script>
+    <?php endif ?>
+    <?php if (!empty($promotionBars)): ?>
+        <div class="promotionbar_slide">
+            <?php foreach ($promotionBars as $key => $value): ?>
+                <div>
+                    <div class="a_promotion_bar_custom"
+                         id="promotion_bar_id_<?php echo $value['bar_id'] ?>"
+                         style="background-color: <?php echo $block->checkColorHex($value['bar_background']) ?>;
+                                 min-height: <?php echo $value['bar_height'] . "px" ?>"
+                    >
+                        <div class="promotion_bar_content">
+                            <?php echo $block->filterContent($value['bar_content']) ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php if ($helper->getCustomerCloseConfig()): ?>
+        <span class="promotion_bar_close"
+              id="promotion_bar_close_<?php echo $block->getBlockPage() . $block->getBlockPosition() ?>"></span>
+    <?php endif ?>
+        <script type="text/x-magento-init">
+        {
+        "*":
+            {
+                "Bss_PromotionBar/js/removepromotionbar": {
+                    "timeOut": <?php echo $helper->getSlideAutoHide() * 1000 ?>,
+                    "position": <?php echo $block->getBlockPosition() ?>,
+                    <?php if (!empty($block->getEndDateSession())):?>
+                        "endDate": <?php echo $block->getEndDateSession() ?>,
+                    <?php endif; ?>
+                    "page": <?php echo $block->getBlockPage() ?>,
+                    "pager": <?php echo $helper->getSlidePager() ?>,
+                    "controls": <?php echo $helper->getSlideControl() ?>,
+                    "pause": <?php echo $helper->getSlideTransitionTime() * 1000 ?>
+                }
+            }
+        }
+        </script>
+    <?php endif ?>
+</div>
+<?php endif;?>

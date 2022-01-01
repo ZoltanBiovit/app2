@@ -1,0 +1,12 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <forcedlogin>
+            <parameters>
+                <status>0</status>
+                <access_to_website>0</access_to_website>
+                <exclude_contact_page>0</exclude_contact_page>
+                <exclude_pages>null</exclude_pages>
+            </parameters>
+        </forcedlogin>
+    </default>
+</config>

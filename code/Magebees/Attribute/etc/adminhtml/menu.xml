@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+	<menu>
+		<add id="Magebees_Attribute::Heading" title="MageBees - Import/Export Products Attributes" module="Magebees_Attribute" sortOrder="50" parent="Magento_Backend::system" resource="Magebees_Attribute::Heading" />
+			<add id="Magebees_Attribute::importset" title="Import Attribute Sets"  action="attribute/importattribute/attributeset" module="Magebees_Attribute" sortOrder="2" parent="Magebees_Attribute::Heading"  resource="Magebees_Attribute::importset"/>
+			<add id="Magebees_Attribute::import" title="Import Attributes"  action="attribute/importattribute/index" module="Magebees_Attribute" sortOrder="2" parent="Magebees_Attribute::Heading"  resource="Magebees_Attribute::import"/>
+			<add id="Magebees_Attribute::export" title="Export Attributes"  action="attribute/exportattribute/index" module="Magebees_Attribute" sortOrder="3" parent="Magebees_Attribute::Heading"  resource="Magebees_Attribute::export"/>
+	</menu>
+</config>
+

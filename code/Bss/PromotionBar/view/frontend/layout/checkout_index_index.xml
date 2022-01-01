@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_PromotionBar
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="Bss\PromotionBar\Block\PromotionBar" name="promotionbar_checkout_page_top" as="promotionbar_checkout_page_top" before="-" template="Bss_PromotionBar::template.phtml" ifconfig="promotion_bar/general/enable"/>
+            <referenceBlock name="promotionbar_default_page_top" remove="true"/>
+        </referenceContainer>
+        <referenceContainer name="content.top">
+            <block class="Bss\PromotionBar\Block\PromotionBar" name="promotionbar_checkout_content_top" as="promotionbar_product_content_top" before="-" template="Bss_PromotionBar::template.phtml"  ifconfig="promotion_bar/general/enable"/>
+            <referenceBlock name="promotionbar_default_content_top" remove="true"/>
+        </referenceContainer>
+        <referenceContainer name="content.bottom">
+            <block class="Bss\PromotionBar\Block\PromotionBar" name="promotionbar_checkout_page_bottom" as="promotionbar_product_content_sidebar_bottom" template="Bss_PromotionBar::template.phtml" after="-"  ifconfig="promotion_bar/general/enable"/>
+            <referenceBlock name="promotionbar_default_page_bottom" remove="true"/>
+        </referenceContainer>
+    </body>
+</page>

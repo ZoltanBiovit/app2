@@ -1,0 +1,45 @@
+{
+    "name": "bsscommerce/b2b-wholesale-package",
+    "description": "Bss Magento 2 B2B Wholesale Package",
+    "type": "magento2-module",
+    "version": "1.0.7",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+	"autoload": {
+        "files": [
+            "AddMultipleProducts/registration.php",
+            "B2bRegistration/registration.php",
+            "CatalogPermission/registration.php",
+            "ConfiguableGridView/registration.php",
+            "FastOrder/registration.php",
+            "ForceLogin/registration.php",
+            "HidePrice/registration.php",
+            "MultiWishlist/registration.php",
+            "OrderAmount/registration.php",
+			"QuoteExtension/registration.php",
+            "ReorderProduct/registration.php",
+            "StoreCredit/registration.php",
+            "SalesRep/registration.php",
+            "CompanyAccount/registration.php"
+        ],
+        "psr-4": {
+            "Bss\\AddMultipleProducts\\": "AddMultipleProducts",
+            "Bss\\B2bRegistration\\": "B2bRegistration",
+            "Bss\\CatalogPermission\\": "CatalogPermission",
+            "Bss\\ConfiguableGridView\\": "ConfiguableGridView",
+            "Bss\\FastOrder\\": "FastOrder",
+            "Bss\\ForceLogin\\": "ForceLogin",
+            "Bss\\HidePrice\\": "HidePrice",
+            "Bss\\MultiWishlist\\": "MultiWishlist",
+            "Bss\\OrderAmount\\": "OrderAmount",
+			"Bss\\QuoteExtension\\": "QuoteExtension",
+            "Bss\\ReorderProduct\\": "ReorderProduct",
+            "Bss\\StoreCredit\\": "StoreCredit",
+            "Bss\\SalesRep\\": "SalesRep",
+            "Bss\\CompanyAccount\\": "CompanyAccount"
+        }
+    }
+}
+

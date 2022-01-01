@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="ecomwise" translate="label" sortOrder="200">
+            <label>Ecomwise</label>
+        </tab>
+        <section id="forcedlogin" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>           
+            <label>B2B Forced Login</label>
+            <tab>ecomwise</tab>
+            <resource>Ecomwise_ForcedLogin::config_forcedlogin</resource>
+            <group id="info" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Info &amp; Support</label>
+                <hide_in_single_store_mode>1</hide_in_single_store_mode>
+                <field id="version" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Extension Enabled</label>
+                    <frontend_model>Ecomwise\ForcedLogin\Block\Adminhtml\Support</frontend_model>
+                </field>
+            </group>
+            <group id="parameters" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings</label>
+                <hide_in_single_store_mode>1</hide_in_single_store_mode>
+                <field id="status" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Extension Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="access_to_website" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Access to Website</label>
+                    <source_model>Ecomwise\ForcedLogin\Model\Config\Source\Access</source_model>
+                </field>
+                <field id="exclude_pages" translate="label" type="multiselect" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exclude Pages</label>
+                    <source_model>Ecomwise\ForcedLogin\Model\Config\Source\Cms</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="exclude_contact_page" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exclude Contact Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="customergroups_ecw" translate="label" type="multiselect"  sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Allowed customer groups</label>
+                    <source_model>Ecomwise\ForcedLogin\Model\Source\Config\CustomerGroups</source_model>
+                    <can_be_empty>1</can_be_empty>
+		 	    </field>
+            </group>
+        </section>
+    </system>
+</config>

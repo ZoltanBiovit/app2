@@ -1,0 +1,170 @@
+# BSS Commerce Co.
+#
+# NOTICE OF LICENSE
+#
+# This source file is subject to the EULA
+# that is bundled with this package in the file LICENSE.txt.
+# It is also available through the world-wide-web at this URL:
+# http://bsscommerce.com/Bss-Commerce-License.txt
+#
+# @category   BSS
+# @package    Bss_RewardPointGraphQl
+# @author     Extension Team
+# @copyright  Copyright (c) 2020 BSS Commerce Co. ( http://bsscommerce.com )
+# @license    http://bsscommerce.com/Bss-Commerce-License.txt
+
+type Query {
+    bssRewardPointStoreConfig(storeview: Int!): ModuleConfigs @resolver(class: "\\Bss\\RewardPointGraphQl\\Model\\Resolver\\GetModuleConfigs") @doc(description:"Add delivey information to cart quote.")
+    bssRewardPointsTransaction: RewardPointsTransactions @resolver(class: "\\Bss\\RewardPointGraphQl\\Model\\Resolver\\GetTransaction") @doc(description:"Get data from table bss_reward_point_transaction")
+    bssRewardPointsRule: RewardPointsRules @resolver(class: "\\Bss\\RewardPointGraphQl\\Model\\Resolver\\GetRule") @doc(description:"Get data from table bss_reward_point_rule")
+}
+
+type ModuleConfigs @doc(description: "Module configs") {
+    active: Int @doc(description: "Active or disabled module")
+    redeem_threshold: String @doc(description: "Minimum redeem threshold")
+    maximum_threshold: String @doc(description: "Maximum reward threshold")
+    expire_day: String @doc(description: "Expiry period (days)")
+    earn_tax: Int @doc(description: "Allow earning points from tax paid")
+    earn_shipping: Int @doc(description: "Allow earning points from shipping fee")
+    earn_order_paid: Int @doc(description: "Allow earning points from order already paid by points")
+    maximum_earn_order: String @doc(description: "Maximum number of points can earn per order")
+    maximum_earn_review: String @doc(description: "Maximum number of points can earn per review")
+    auto_refund: Int @doc(description: "Auto refund order to points balance")
+    maximum_point_order: String @doc(description: "Maximum number of points can spend per order")
+    allow_spend_tax: Int @doc(description: "Allow spending points on tax")
+    allow_spend_shipping: Int @doc(description: "Allow spending points on shipping fee")
+    restore_spent: Int @doc(description: "Restore spent points if order is refunded")
+    point_icon: String @doc(description: "Message icon")
+    sw_point_header: String @doc(description: "Show point balance on header")
+    point_mess_register: Int @doc(description: "On account page")
+    point_subscrible: Int @doc(description: "On subscription block")
+    cart_order_summary: Int @doc(description: "Display the number of points customers can get.")
+    product_page_tab_review: Int @doc(description: "Show the number of points customers can get after submitting a review and the review is approved by the store owner.")
+    product_page_reward_point: Int @doc(description: "Display the number of points customers can get when purchasing products.")
+    cate_page_reward_point: Int @doc(description: "Set Yes to show the number of points can be given.")
+    point_slider: Int @doc(description: "Display a slider of points to determine how many point to spend on the shopping cart or checkout page.")
+    sender: String @doc(description: "Select an email as the sender")
+    earn_point_template: String @doc(description: "Email template to notify customers about receiving points.")
+    spend_point_template: String @doc(description: "Email template to notify customers about spending points")
+    expiry_warning_template: String @doc(description: "Email template to notify customers about point expiry.")
+    expire_day_before: String @doc(description: "Send warning before expiry (days)")
+    subscrible: Int @doc(description: "Subscribe customer by default")
+}
+
+type Customer {
+    reward_point: RewardPoint @resolver(class: "Bss\\RewardPointGraphQl\\Model\\Resolver\\CustomerRewardPoint")
+}
+
+type RewardPoint {
+    point: Int @doc(description: "Points balance of customer")
+    point_used: Int @doc(description: "Points earned of customer")
+    point_expired: Int @doc(description: "Total Points expired of customer")
+    amount: Float @doc(description: "Total Amounts of customer")
+    notify_balance: Int @doc(description: "Notify when balance is updated")
+    notify_expiration: Int @doc(description: "Notify before expiration")
+    rate_point: Int @doc(description: "Rate point")
+    subscribe_point: SubscribePoint
+    first_review_point: Int
+    birth_day_point: Int
+}
+
+type SubscribePoint {
+    point: Int
+    message: String
+}
+
+type RewardPointsTransaction @doc(description: "Transaction fields") {
+    transaction_id: Int @doc(description: "Transaction id")
+    website_id: Int @doc(description: "Website id of transaction")
+    customer_id: Int  @doc(description: "Customer id")
+    point: Int @doc(description: "Point of transaction")
+    point_used: Int @doc(description: "Point used of transaction")
+    point_expired: Int @doc(description: "Point expired of transaction")
+    amount: Float @doc(description: "Amount of transaction")
+    base_currrency_code: String @doc(description: "Base Currency Code")
+    basecurrency_to_point_rate: Float @doc(description: "Base Currency To Point Rate")
+    action_id: Int @doc(description: "Action rewards id")
+    action: String @doc(description: "Action rewards")
+    created_at: String @doc(description: "The date the transaction was created")
+    note: String @doc(description: "Note of the customer when transaction")
+    created_by: String @doc(description: "Customer's Email create transaction")
+    is_expired: Int @doc(description: "The transaction has been expired or not")
+    expires_at: String @doc(description: "The date the transaction expires")
+}
+
+type RewardPointsTransactions {
+    items: [RewardPointsTransaction] @doc(description: "Array of transactions")
+}
+
+type RewardPointsRules {
+    rules: [RewardPointsRule] @doc(description: "Array of rules")
+}
+
+type RewardPointsRule {
+    rule_id: Int
+    name: String
+    type: String
+    from_date: String
+    to_date: String
+    conditions_serialized: String
+    actions_serialized: String
+    product_ids: String
+    priority: Int
+    simple_action: String
+    point: Int
+    purchase_point: Int
+    spent_amount: Int
+}
+
+type Mutation {
+    applyRewardPoint(input: applyRewardPointInput): applyRewardPointOutput @resolver(class: "\\Bss\\RewardPointGraphQl\\Model\\Resolver\\ApplyRewardPoint")
+    updateNotify(input: updateNotifyInput): updateNotifyOutput @resolver(class: "\\Bss\\RewardPointGraphQl\\Model\\Resolver\\UpdateNotify")
+}
+
+input updateNotifyInput {
+    notify_balance: Int @doc(description: "Status Notify balance")
+    notify_expiration: Int @doc(description: "Status Notify expiration")
+}
+
+input applyRewardPointInput {
+    cart_id: String @doc(description: "Hash of Cart Id.The unique value that identifies the customer's cart")
+    amount: Int @doc(description: "The amount of reward points")
+}
+
+type updateNotifyOutput {
+    status: updateNotifyStatus
+}
+
+type applyRewardPointOutput {
+  cart: cartOutput
+}
+
+type updateNotifyStatus {
+    success: Boolean
+    message: String
+}
+
+type cartOutput {
+    success: Boolean
+    error_message: String
+}
+
+interface ProductInterface {
+    reward_point: ProductRewardPoint @doc(description: "RewardPoint's attributes of product") @resolver(class: "\\Bss\\RewardPointGraphQl\\Model\\Resolver\\RewardPointAttribute")
+}
+
+type ProductRewardPoint {
+    product_point: RewardPointAttributes
+    customer_point: ProductPointOfCustomer
+}
+type RewardPointAttributes {
+    assign_by: Int
+    receive_point: Int
+    dependent_qty: Int
+    point: Int
+    message : String
+}
+type ProductPointOfCustomer {
+    review_point: Int
+    message: String
+}

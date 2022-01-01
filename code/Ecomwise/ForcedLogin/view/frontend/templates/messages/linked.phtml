@@ -1,0 +1,5 @@
+<?= $block->escapeHtml(__(
+    'You are not authorized to login. Contact our <a href="%1">customer support </a> for more information',
+    $block->getData('url')
+), ['a']);
+?>

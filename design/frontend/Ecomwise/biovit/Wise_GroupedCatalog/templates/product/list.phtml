@@ -1,0 +1,232 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magento\Framework\App\Action\Action;
+use Wise\GroupedCatalog\ViewModel\GroupedProduct;
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @var $block \Magento\Catalog\Block\Product\ListProduct
+ */
+?>
+<?php
+/** @var $viewModel GroupedProduct */
+$viewModel = $block->getViewModel();
+?>
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$helperQuote = $this->helper('\Bss\QuoteExtension\Helper\Data');
+$customerHelper = $this->helper('\Ecomwise\Overrides\Helper\Customer');
+?>
+<?php if (!$_productCollection->count()) : ?>
+    <div class="message info empty">
+        <div><?= /* @escapeNotVerified */ __('We can\'t find products matching the selection.') ?></div>
+    </div>
+<?php else : ?>
+    <?= $block->getToolbarHtml() ?>
+    <?= $block->getAdditionalHtml() ?>
+    <?php
+    if ($block->getMode() == 'grid') {
+        $viewMode = 'grid';
+        $imageDisplayArea = 'category_page_grid';
+        $showDescription = false;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    } else {
+        $viewMode = 'list';
+        $imageDisplayArea = 'category_page_list';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+    }
+    /**
+     * Position for actions regarding image size changing in vde if needed
+     */
+    $pos = $block->getPositioned();
+    ?>
+    <div class="products wrapper <?= /* @escapeNotVerified */ $viewMode ?> products-<?= /* @escapeNotVerified */ $viewMode ?>">
+        <ol class="products list items product-items">
+            <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+            <?php foreach ($_productCollection as $_product) : ?>
+                <li class="item product product-item">
+                    <div class="product-item-info" data-container="product-<?= /* @escapeNotVerified */ $viewMode ?>">
+                        <?php
+                        $productImage = $block->getImage($_product, $imageDisplayArea);
+                        if ($pos != null) {
+                            $position = ' style="left:' . $productImage->getWidth() . 'px;'
+                                . 'top:' . $productImage->getHeight() . 'px;"';
+                        }
+                        ?>
+                        <?php // Product Image
+                        ?>
+                        <a href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                            <?= $productImage->toHtml() ?>
+                        </a>
+                        <div class="product details product-item-details">
+                            <?php
+                            $_productNameStripped = $block->stripTags($_product->getName(), null, true);
+                            ?>
+                            <strong class="product name product-item-name">
+                                <a class="product-item-link" href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>">
+                                    <!-- <?= $block->escapeHtml($_product->getSku()) . ' / ' . /* @escapeNotVerified */ $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>                                    -->
+                                    <?= /* @escapeNotVerified */ $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>                                   
+                                </a>
+                            </strong>
+                            <strong class="ecw-arrow arrow-<?php echo $_product->getId()?>">
+                                <i class='shape124'></i>
+                                <script type="text/javascript">
+                                    require(['jquery', 'jquery/ui'], function($) {
+                                        $(document).ready(function() {
+                                            $(".arrow-<?php echo $_product->getId() ?>").click(function() {
+                                                $( ".toggle-<?php echo $_product->getId()?>" ).toggle();
+                                                $( ".arrow-<?php echo $_product->getId()?>" ).toggleClass("active");
+                                            });
+                                        });
+                                    });
+                                </script>
+                            </strong>
+                            <?php $associatedProducts = $viewModel->getAssociatedProducts($_product) ?>
+                            <?php $hasAssociatedProducts = count($associatedProducts) > 0; ?>
+                            <?php if ($hasAssociatedProducts) : ?>
+                                <?php $postParams = $block->getAddToCartPostParams($_product); ?>
+                                <form class="ecw-table-toggle toggle-<?php echo $_product->getId() ?>" style="display:none" data-role="tocart-form" data-product-sku="<?= $block->escapeHtml($_product->getSku()) ?>" action="<?= /* @NoEscape */ $postParams['action'] ?>" method="post" <?php if ($_product->getOptions()) : ?> enctype="multipart/form-data" <?php endif; ?>>
+                                    <input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $_product->getId() ?>" />
+                                    <input type="hidden" name="selected_configurable_option" value="" />
+                                    <input type="hidden" name="related_product" value="" />
+                                    <input type="hidden" name="item" value="<?php /* @escapeNotVerified */ echo $_product->getId() ?>" />
+                                    <?= $block->getBlockHtml('formkey') ?>
+                                    <div class="table-wrapper grouped">
+                                        <table class="table data grouped" id="super-product-table">
+                                            <caption class="table-caption"><?= $block->escapeHtml(__('Grouped product items')) ?></caption>
+                                            <thead data-role="collapsible">
+                                                <tr>
+                                                    <th class="col item ecw-item" style="cursor: pointer" data-role="trigger" scope="col"><?= $block->escapeHtml(__('Kat. broj')) ?></th>
+                                                    <th class="col item ecw-manufacturer" style="cursor: pointer" data-role="trigger" scope="col"><?php echo $_product->getResource()->getAttribute('biovit_pakiranje')->getStoreLabel(); ?></th>
+                                                    <th class="col item ecw-price" style="cursor: pointer" data-role="trigger" scope="col"><?= $block->escapeHtml(__('Product Price')) ?></th>
+                                                    <?php if ($_product->isSaleable()) : ?>
+                                                        <th class="col qty" scope="col"><?= $block->escapeHtml(__('Qty')) ?></th>
+                                                    <?php endif; ?>
+                                                </tr>
+                                            </thead>
+
+                                            <?php if ($hasAssociatedProducts) : ?>
+                                                <tbody data-role="content">
+                                                    <?php foreach ($associatedProducts as $item) : ?>
+                                                        <?php 
+                                                            $pakiranje = $_product->getResource()->getAttributeRawValue($item->getId(),'biovit_pakiranje',$item->getId()); 
+                                                            if(is_array($pakiranje)){
+                                                                $pakiranje = '';
+                                                            }
+                                                        ?>
+                                                        <tr>
+                                                            <td data-th="<?= $block->escapeHtmlAttr(__('Product Name')); ?>" class="col item ecw-item">
+                                                                <strong class="product-item-name"><?= $block->escapeHtml($item->getSku()) ?></strong>
+                                                            </td>
+                                                            <td data-th="<?= $block->escapeHtmlAttr(__('Pakiranje')); ?>" class="col item ecw-manufacturer">
+                                                                <strong class="product-item-manufacturer"> <?php echo $pakiranje;  ?> </strong>
+                                                            </td>
+                                                            <td data-th="<?= $block->escapeHtmlAttr(__('Price')); ?>" class="col price ecw-price">
+                                                                <?php if ($block->getCanShowProductPrice($_product)) : ?>
+                                                                    <?php if ($block->getCanShowProductPrice($item)) : ?>
+                                                                        <?= /* @noEscape */ $block->getProductPrice($item) ?>
+                                                                    <?php endif; ?>
+                                                                <?php endif; ?>
+                                                            </td>
+                                                            <?php if ($_product->isSaleable()) : ?>
+                                                                <td data-th="<?= $block->escapeHtmlAttr(__('Qty')) ?>" class="col qty ecw-qty">
+                                                                    <?php if ($item->isSaleable()) : ?>
+                                                                        <?php $postParams = $block->getAddToCartPostParams($item); ?>
+                                                                        <?= $block->getBlockHtml('formkey') ?>
+                                                                        <input type="number" name="super_group[<?= $block->escapeHtmlAttr($item->getId()) ?>]" data-selector="super_group[<?= $block->escapeHtmlAttr($item->getId()) ?>]" maxlength="12" value="<?php /* @escapeNotVerified */ echo $item->getQty() * 1 ?>" title="<?php /* @escapeNotVerified */ echo __('Qty') ?>" class="input-text qty" data-validate="{'validate-grouped-qty':'#super-product-table'}" data-errors-message-box="#validation-message-box" />
+                                                                    <?php else : ?>
+                                                                        <div class="stock unavailable" title="<?= $block->escapeHtmlAttr(__('Availability')) ?>">
+                                                                            <span><?= $block->escapeHtml(__('Out of stock')) ?></span>
+                                                                        </div>
+                                                                    <?php endif; ?>
+                                                                </td>
+                                                            <?php endif; ?>
+                                                        </tr>
+                                                        <?php if (
+                                                            $block->getCanShowProductPrice($_product)
+                                                            && $block->getCanShowProductPrice($item)
+                                                            && trim($block->getProductPriceHtml(
+                                                                $item,
+                                                                \Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE
+                                                            ))
+                                                        ) : ?>
+                                                            <tr class="row-tier-price">
+                                                                <td colspan="2">
+                                                                    <?= $block->getProductPriceHtml(
+                                                                        $item,
+                                                                        \Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE
+                                                                    ) ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            <?php else : ?>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="unavailable" colspan="<?php if ($_product->isSaleable()) : ?>4<?php else : ?>3<?php endif; ?>">
+                                                            <?= $block->escapeHtml(__('No options of this product are available.')) ?>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            <?php endif; ?>
+                                        </table>
+                                    </div>
+                                    <div id="validation-message-box"></div>
+                                    <?php if ($helperQuote->isEnable() && $helperQuote->isActiveRequest4Quote($_product)) : ?>
+                                        <div class="box-tocart quote_extension23">
+                                            <button type="button" title="Add to Quote" class="action primary toquote product-addtoquote-button">
+                                                <span><?= $block->escapeHtml(__('Dodaj ponudi')) ?></span>
+                                            </button>
+                                        </div>
+                                        <?php endif; ?>
+                                </form>
+                            
+                        <?php endif; ?>
+                        <?php if (!$hasAssociatedProducts) : ?>
+                            <?= /* @escapeNotVerified */ $block->getProductPrice($_product) ?>
+                        <?php endif; ?>
+                        <?= $block->getProductDetailsHtml($_product) ?>
+
+
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+    </div>
+    <?= $block->getToolbarHtml() ?>
+    <?php if (!$block->isRedirectToCartEnabled()) : ?>
+        <script type="text/x-magento-init">
+            {
+            "[data-role=tocart-form], .form.map.checkout": {
+                "catalogAddToCart": {
+                    "product_sku": "<?= /* @NoEscape */ $_product->getSku() ?>"
+                }
+            }
+        }
+        </script>
+    <?php endif; ?>
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Wise_GroupedCatalog/js/search-add-to-quote": {
+                    "validateQty" : "0",
+                    "addToQuoteButtonTextDefault" : "Add to Quote"
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

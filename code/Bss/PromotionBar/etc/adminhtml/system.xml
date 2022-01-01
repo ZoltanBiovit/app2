@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_PromotionBar
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+ 
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="bss" translate="label" sortOrder="300">
+            <label>Bss Commerce</label>
+		</tab>
+
+		<section id="promotion_bar" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Promotion Bar</label>
+            <tab>bss</tab> 
+            <resource>Bss_PromotionBar::config_promotionbar</resource>
+            <group id="general" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Version 1.1.2</comment>
+                </field>
+                <field id="customer_close" translate="label" type="select" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display “Close” button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Customers can manually close the Promotion Bar.</comment>
+                </field>
+                <field id="multi_bar" translate="label" type="select" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Multiple Promotion Bars</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Show multiple Promotion Bars in a slider.</comment>
+                </field>
+                <field id="slide_control" translate="label" type="select" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Slide Control</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Choose Yes to enable “Previous” / “Next” button on the slider.</comment>
+                    <depends>
+                        <field id="multi_bar">1</field>
+                    </depends>
+                </field>
+                <field id="slide_pager" translate="label" type="select" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Slider Pagination</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Choose Yes to enable pagination function for the slider.</comment>
+                    <depends>
+                        <field id="multi_bar">1</field>
+                    </depends>
+                </field>
+                <field id="slide_time" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Autoplay Speed of Slider (seconds)</label>
+                    <comment>The amount of time (count in seconds) for the slider to automatically transit.</comment>
+                    <validate>validate-greater-than-zero required-entry</validate>
+                    <depends>
+                        <field id="multi_bar">1</field>
+                    </depends>
+                </field>
+                <field id="slide_auto_hide" translate="label" type="text" sortOrder="26" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auto Close Slider After (seconds)</label>
+                    <comment>The amount of time (count in seconds) for the slider to automatically close. Fill “0” to disable auto close.</comment>
+                    <validate>validate-zero-or-greater required-entry</validate>
+                    <depends>
+                        <field id="multi_bar">1</field>
+                    </depends>
+                </field>
+            </group>
+		</section>
+	</system>
+</config>

@@ -1,0 +1,257 @@
+// /**
+//  * BSS Commerce Co.
+//  *
+//  * NOTICE OF LICENSE
+//  *
+//  * This source file is subject to the EULA
+//  * that is bundled with this package in the file LICENSE.txt.
+//  * It is also available through the world-wide-web at this URL:
+//  * http://bsscommerce.com/Bss-Commerce-License.txt
+//  *
+//  * @category   BSS
+//  * @package    Bss_PromotionBar
+//  * @author     Extension Team
+//  * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+//  * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+	//Edit Css 1.0.6
+	.promotion_bar_close {
+		color: #000;
+		text-decoration: none;
+		position: absolute;
+		top: 2px;
+		right: 0px;
+		background: url(../Bss_PromotionBar/images/promotionbar_close.png) no-repeat;
+		opacity: 0.5;
+		cursor: pointer;
+		width: 16px;
+		height: 16px;
+		z-index: 99;
+	}
+
+	#promotionbar_bottomposition {
+		max-width: 1240px !important;
+		margin-bottom: 10px;
+	}
+
+	.promotionbar_wrapper p {
+		margin-bottom: 0;
+	}
+
+	.promotionbar_wrapper {
+		display: table;
+		width: 100%;
+		position: relative;
+		z-index: 1;
+		max-width: 100% !important;
+		text-align: center;
+	}
+
+	.a_promotion_bar {
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+		margin: auto !important;
+		width: 100%;
+	}
+
+	.promotion_bar_content img{
+		margin: 0 auto 0;
+	}
+
+	.promotion_bar_content p{
+		display: grid;
+	}
+
+	/** RESET AND LAYOUT
+	===================================*/
+	.bx-wrapper {
+		position: relative;
+		padding: 0;
+		*zoom: 1;
+		-ms-touch-action: pan-y;
+		touch-action: pan-y;
+		max-width: 100%;
+	}
+
+	.bx-wrapper img {
+		max-width: 100%;
+		display: block;
+	}
+
+	.bxslider {
+		margin: 0;
+		padding: 0;
+	}
+
+	ul.bxslider {
+		list-style: none;
+	}
+
+	.bx-viewport {
+
+		/*fix other elements on the page moving (on Chrome)*/
+		-webkit-transform: translatez(0);
+	}
+
+	/** THEME
+	===================================*/
+	.bx-wrapper .bx-pager,
+	.bx-wrapper .bx-controls-auto {
+		position: absolute;
+		bottom: 2px;
+		width: 100%;
+	}
+
+	/* PAGER */
+	.bx-wrapper .bx-pager {
+		text-align: center;
+		font-size: .85em;
+		font-family: Arial;
+		font-weight: bold;
+		color: #666;
+		z-index: 99;
+	}
+
+	.bx-wrapper .bx-pager.bx-default-pager a {
+		background: #666;
+		text-indent: -9999px;
+		display: block;
+		width: 7px;
+		height: 7px;
+		margin: 0 3px;
+		outline: 0;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+	}
+
+	.bx-wrapper .bx-pager.bx-default-pager a:hover,
+	.bx-wrapper .bx-pager.bx-default-pager a.active,
+	.bx-wrapper .bx-pager.bx-default-pager a:focus {
+		background: #000;
+	}
+
+	.bx-wrapper .bx-pager-item,
+	.bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+		display: inline-block;
+		vertical-align: bottom;
+		*zoom: 1;
+		*display: inline;
+	}
+
+	.bx-wrapper .bx-pager-item {
+		font-size: 0;
+		line-height: 0;
+	}
+
+	/* DIRECTION CONTROLS (NEXT / PREV) */
+	.bx-wrapper .bx-prev {
+		left: 10px;
+		background: url('../Bss_PromotionBar/images/promotionbar_controls.png') no-repeat 0 -16px;
+	}
+
+	.bx-wrapper .bx-prev:hover,
+	.bx-wrapper .bx-prev:focus {
+		background-position: 0 0;
+	}
+
+	.bx-wrapper .bx-next {
+		right: 10px;
+		background: url('../Bss_PromotionBar/images/promotionbar_controls.png') no-repeat -21px -16px;
+	}
+
+	.bx-wrapper .bx-next:hover,
+	.bx-wrapper .bx-next:focus {
+		background-position: -21px 0;
+	}
+
+	.bx-wrapper .bx-controls-direction a {
+		position: absolute;
+		top: 50%;
+		margin-top: -8px;
+		outline: 0;
+		width: 20px;
+		height: 16px;
+		text-indent: -9999px;
+		z-index: 9999;
+	}
+
+	.bx-wrapper .bx-controls-direction a.disabled {
+		display: none;
+	}
+
+	/* IMAGE CAPTIONS */
+	.bx-wrapper .bx-caption {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background: #666;
+		background: rgba(80, 80, 80, 0.75);
+		width: 100%;
+	}
+
+	.bx-wrapper .bx-caption span {
+		color: #fff;
+		font-family: Arial;
+		display: block;
+		font-size: .85em;
+		padding: 10px;
+	}
+
+	#promotionbar_bottomposition {
+		.a_promotion_bar {
+			.promotion_bar_content {
+				max-width: 1240px !important;
+				margin-bottom: 10px;
+			}
+		}
+		.promotionbar_slide {
+			.promotion_bar_content {
+				max-width: 1240px !important;
+				margin-bottom: 10px;
+			}
+		}
+	}
+	.page-wrapper {
+		>.page-bottom {
+			width: 90%;
+			margin: auto;
+		}
+	}
+	.page-bottom {
+		.content {
+			width: 100%;
+		}
+	}
+	.a_promotion_bar_custom {
+		text-align: center;
+		display: flex;
+	}
+	.promotion_bar_content {
+		margin: auto;
+	}
+
+
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum ='max') and (@break = @screen__m) {
+	.promotion_bar_content{
+		display: inline;
+		width: 100% !important;
+	}
+	.promotion_bar_content > p{
+		
+	}
+
+}

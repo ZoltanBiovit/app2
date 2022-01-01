@@ -1,0 +1,78 @@
+    <?php $export_url = $block->getUrl('*/*/export'); ?>
+    <?php $attributeset = $block->getAttributeSet();  ?>
+    <div class="admin__old">
+        <div id="result"></div><br/>
+        <div class="main-col" id="container">
+            <div id="messages">
+                <div class="messages">
+                    <div class="message message-notice notice">
+                        <div>
+                            Note : Exported file will be save in <b>var/export</b> directory.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="messages">
+                <div class="messages">
+                    <div class="message message-notice notice">
+                        <div>
+                            Note : Only user define attributes exported.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="entry-edit form-inline">
+                <form method="post" action="<?php //echo $block->getUrl('*/*/export') ?>" id="export_edit_form" >
+                    <input name="form_key" type="hidden" value="<?php echo $block->getFormKey() ?>" />
+                        
+                        <legend class="admin__legend legend">
+                            <span>Export Products Attributes Settings</span>
+                        </legend><br>
+                        <div>
+                            <label class="label admin__field-label">
+                                <span><b>Select Attribute Set  </b></span> &nbsp;&nbsp;
+                            </label>
+                            <select id="attrids" style="width:200px;" class="select admin__control-select" name="attrids">
+                                <option value="0"><?php echo "All Attribute Set"; ?></option>
+                                    <?php foreach ($attributeset as $attributesetval) { ?>
+                                    <option value="<?php echo $attributesetval['value']; ?>"><?php echo $attributesetval['label']; ?></option>
+                                    <?php }?>
+                            </select> 
+                        </div>
+                    <br><br>
+                        <button id="export_attr" type="button" class="action- scalable"><span>Click on For Export</span></button>
+                    <!-- <button type="submit" class="action- scalable"><span>Click on For Export</span></button> -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        require([
+            'jquery'
+        ],
+        function(jQuery) {
+            var attrids = jQuery( "#attrids" ).val();
+            jQuery('#attrids').on('change', function (e) {
+                var optionSelected = jQuery("option:selected", this);
+                attrids = this.value;
+            
+            });
+            
+            var exporturl = "<?php echo $export_url ?>";
+            jQuery('#export_edit_form').on('click', '#export_attr', function(event){
+                    jQuery.ajax({
+                        url : exporturl,
+                        data: { attrids : attrids} ,
+                        dataType: 'json',
+                        type: 'get',
+                        showLoader:true,
+                        success: function(data){
+                            jQuery('#result').html(data);
+                        }
+                    });
+                })
+            }
+        );
+    </script>

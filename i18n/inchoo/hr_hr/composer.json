@@ -1,0 +1,28 @@
+{
+  "name": "inchoo/language-hr_hr",
+  "description": "Croatian (Hrvatski) language pack for Magento2",
+    "keywords": [
+    "magento2",
+    "translation"
+  ],
+  "type": "magento2-language",
+  "version": "1.1.0",
+  "license": [
+    "OSL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Inchoo team",
+      "email": "inquire@inchoo.net",
+      "homepage": "http://inchoo.net/"
+    }
+  ],
+  "require": {
+    "magento/framework": "~100.0.0||~101.0.0||~102.0.0"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ]
+  }
+}

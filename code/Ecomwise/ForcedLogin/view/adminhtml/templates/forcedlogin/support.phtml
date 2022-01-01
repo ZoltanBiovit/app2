@@ -1,0 +1,84 @@
+<style type="text/css">
+.contentWrap h2{
+	font-size:13px;
+	padding: 10px 0 4px;
+}
+
+.contentWrap .version h2, .contentWrap .compatibility h2 {
+	float: left;
+	width: 200px;
+}
+
+.contentWrap .installation{
+	padding-bottom:20px;
+}
+.contentWrap div{
+	padding-bottom:15px;
+}
+
+.contentWrap div.paragraph{
+	padding: 11px 0 4px;	
+}
+</style>
+<div class="contentWrap">	    
+    <div>
+    	<h2><?php echo $block->escapeHtml('Name & Version:'); ?></h2>
+        <p><?php echo $block->escapeHtml($block->name).' '.$block->escapeHtml($block->version); ?></p>
+    </div>
+    <div>
+        <h2><?php $block->escapeHtml('Compatibility:'); ?></h2>
+        <p><?php echo $block->escapeHtml($block->compatibility); ?></p>       
+    </div>
+    <div class="documentation">
+        <h2><?php echo $block->escapeHtml('Documentation & Installation'); ?></h2>           
+        <p>
+        <?php
+        echo $block->escapeHtml(
+            'Read the installation manual & user guide to help you 
+			with the installation and configuration.'
+        );
+?>
+        </p>
+        <p>
+            <a class="pdf" 
+                href="<?php echo $block->escapeHtml($block->manualUrl); ?>" 
+                title="<?php echo $block->escapeHtml('Download User Guide'); ?>" 
+                target="<?php echo $block->escapeHtml($block->manualUrl); ?>">
+                <?php echo $block->escapeHtml('B2B Forced Login installation & user guide'); ?>
+            </a>
+        </p>                                        
+    </div>
+    
+    <div class="questions">
+        <h2><?php echo $block->escapeHtml('Support & Questions?'); ?></h2>           
+        <p><?php echo $block->escapeHtml('Visit our'); ?> 
+            <a href="<?php echo $block->escapeHtml($block->faq); ?>" target="_blank">
+                <?php echo $block->escapeHtml('FAQ page'); ?>
+            </a> 
+            <?php echo $block->escapeHtml('for more info.'); ?>
+        </p>
+        <p>
+            <a class="support" href="<?php echo $block->escapeHtml($block->supportUrl); ?>" 
+                title="<?php echo $block->escapeHtml('Contact Support'); ?>" 
+                target="_blank"><?php echo $block->escapeHtml('Contact support'); ?>
+            </a>
+        </p>                            
+    </div>
+       
+    <div class="about">
+        <h2><?php echo $block->escapeHtml('About B2B Extensions'); ?></h2>           
+        <p>
+            <?php echo $block->escapeHtml('B2B Extensions is a product of'); ?> 
+            <a href="http://www.ecomwise.com/" target="_blank"><?php echo $block->escapeHtml('Ecomwise.com'); ?></a>
+        </p>                            
+    </div>
+    
+    <div class="mail">
+        <h2><?php echo $block->escapeHtml('Do you have Feedback or improvements?'); ?></h2>          
+        <p>
+            <a href="mailto:<?php echo $block->escapeHtml($block->email); ?>" target="_blank">
+                <?php echo $block->escapeHtml('Please e-mail us your feedback'); ?>
+            </a>
+        </p>                            
+    </div>          
+</div>  

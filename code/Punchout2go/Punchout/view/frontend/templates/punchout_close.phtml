@@ -1,0 +1,10 @@
+<?php
+/** @var \Punchout2go\Punchout\Block\Session\Close $block */
+if ($block->getDisplayReturnLinkEnabled()) {
+    ?>
+    <li class="punchout-close">
+        <a <?= /* @noEscape */ $block->getLinkAttributes() ?>>
+            <?= $block->escapeHtml($block->getLabel()); ?>
+        </a>
+    </li>
+<?php } ?>

@@ -1,0 +1,26 @@
+{
+  "name": "magebees/module-import-export-products-attributes",
+  "description": "This extension will import/export products attributes, attribute sets and attribute groups. You can import/export any type of attribute and all associate attribute values as well as the attribute options themselves. You can Import/export Multiple Attribute Set and attribute swatchs.",
+  "type": "magento2-module",
+  "version": "1.3.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "MageBees",
+      "email": "support@magebees.com",
+      "homepage": "https://www.magebees.com/",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Magebees\\Attribute\\": ""
+    }
+  }
+}

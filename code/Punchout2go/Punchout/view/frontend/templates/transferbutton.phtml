@@ -1,0 +1,12 @@
+<a class="action primary checkout <?= $block->escapeHtml($block->getTransferButtonCSS()) ?>"
+   href="<?= /* @noEscape */ $block->getTransferUrl(); ?>" id="po2go-transfer">
+    <span><?= $block->escapeHtml($block->getTransferLabel()); ?></span>
+</a>
+<?php
+$help = $block->getTransferHelp();
+if ($help) {
+    ?>
+    <br /><small><?= $block->escapeHtml($help) ?></small>
+    <?php
+}
+?>

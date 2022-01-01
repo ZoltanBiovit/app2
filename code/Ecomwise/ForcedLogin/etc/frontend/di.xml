@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+
+       <preference for="Magento\Customer\Controller\Account\LoginPost" type="Ecomwise\ForcedLogin\Controller\Account\LoginPost" />
+       <preference for="Magento\Customer\Controller\Account\CreatePost" type="Ecomwise\ForcedLogin\Controller\Account\CreatePost" />
+       <type name="Magento\Framework\View\Element\Message\MessageConfigurationsPool">
+        <arguments>
+            <argument name="configurationsMap" xsi:type="array">
+                <item name="ecwcustomergroups" xsi:type="array">
+                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\BlockRenderer::CODE</item>
+                    <item name="data" xsi:type="array">
+                        <item name="template" xsi:type="string">Ecomwise_ForcedLogin::messages/linked.phtml</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

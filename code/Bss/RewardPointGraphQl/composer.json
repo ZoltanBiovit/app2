@@ -1,0 +1,21 @@
+{
+  "name": "bss/reward-point-graph-ql",
+  "version": "1.0.0",
+  "description": "Magento 2 Reward Point GraphQL API Module",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "bsscommerce/reward-point": "1.0.1"
+  },
+  "license": [
+    ""
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Bss\\RewardPointGraphQl\\": ""
+    }
+  }
+}

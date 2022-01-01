@@ -1,0 +1,308 @@
+Product,Proizvod
+Price,Cijena
+Qty,Količina
+Subtotal,Međuzbroj
+Discount,Popust
+Row Subtotal,Ukupan redni zbroj
+No ordered items,Nema naručenih proizvoda
+SKU,SKU
+Comment,Komentar
+Please select,Molimo Vas označite
+Tier Pricing,Cjenovna razina
+Custom Price,Prilagođena cijena
+Apply,Primijeniti
+Quote Comments,Komentar ponude
+Quote History,Povijest ponude
+Name,Ime
+Quote & Account Information,Ponuda & Informacije o računu
+Quote Information,Informacija ponude
+Purchased From,Kupljeno od
+Link to the New Order,Nova narudžba
+Link to the Previous Order,Prijašnja narudžba
+Placed from IP,Stavljeno od IP-a
+Expiry Date,Datum isteka
+Select Date,Odaberite datum
+Account Information,Informacije o računu
+Customer Name,Ime kupca
+Email,Email
+Email sent,Poslani Email
+Not send email,Neisporučeni Email
+Customer Group,Korisnička grupa
+Minimum Amount,Minimalni iznos
+Quote Totals,Ukupna ponuda
+Quote Subtotal,Međuzbroj ponude
+Tax,PDV
+Quote Total,Ukupna ponuda
+Enable Request4Quote,Omogući Request4Quote
+Request4Quote Global Config,Request4Quote globalna konfiguracija
+Disable Add to Cart,Onemogući dodaj u košaricu
+Apply for Categories,Prijava za kategorije
+Apply for Customer Groups,Prijava za grupe kupaca
+Disable Quote Items Comment,Onemoguđi komentara stavki za ponudu
+Request4Quote Email Config,Request4Quote Email konfiguracija
+Email Sender,Email Pošiljatelj
+Email Receive,Primanje Email-a
+Email Receiver,Primatelj Email-a
+Send Quote Email Copy to,Šalji kopiju ponude na Email
+Send Quote Email Coppy to,Šalji Email kopiju ponude na
+New Quote Email Template for The Admin,Novi predložak Email ponude za administratora
+New Quote Email Template for Customers,Novi predložak Email-a ponude za kupca
+Email Template for Accepted Quote,Email predložak za prihvaćenu ponudu
+Email Template for Cancelled Quote,Email predložak za otkazanu ponudu
+New Quote Email Template,Novi Email predložak za ponudu
+Cancelled Quote Email Template,Otkazana Email ponuda predložak
+Email Template for Rejected Quote,Email predložak za odbijenu ponudu
+Email Template for Expired Quote,Email predložak za isteklu ponudu
+Reminder Template for Soon-expired Quote,Predložak podsjetnika za ponudu koja je uskoro istekla
+Email Template for Resubmitted Quote,Predložak Email-a za ponovo poslanu ponudu
+Email Template for Ordered Quote,Email predložak za naručenu ponudu
+Request4Quote Product Page Config,Request4Quote konfiguracija stranice proizvoda
+Enable for Product Page,Omogući za stranicu proizvoda
+Text,Tekst
+Custom Style,Prilagođeni stil
+Accept & Open Email Template,Prihvati i otvori predložak Email-a
+Expired Quote Email Template,Istekao je predložak Emaila od ponude
+Re-Submit Quote Email Template,Ponovo pošaljite predložak ponude Email-om 
+Your Quote Request has been reviewed and accepted. Please click,Vaš zahtjev za ponudu je pregledan i prihvaćen. Molimo kliknite
+Quote Request ,Zahtjev za ponudu
+Placed on ,Postavljeno na
+Your Quote Request has been cancelled.,Vaš zahtjev za ponudu je otkazan.
+Your Quote Request has been expired.,Vaš zahtjev za ponudu je istekao.
+Thank you for your quote request from %store_name.,Hvala vam za zahtjev ponude %store_name.
+"If you have questions about your quote request, you can email us at","Ako imate pitanja u vezi vaše ponude, možete nam poslati Email"
+Your Quote Request has been reviewed.,Vaš zahtjev za ponudu je pregledan
+Gift Message,Poklon poruka
+From:,Od:
+To:,Za:
+Message,Poruka
+Message:,Poruka:
+Grand Total,Ukupno
+Enter your comments at any time.,Ostavite vaš komentar kad želite
+Item,Proizvod
+See price before order confirmation.,Pogledajte cijenu prije potvrde narudžbe.
+What's thisđ,Što je ovođ
+Move to Checkout,Premjesti do provjere
+There is no quote.,Nema ponude.
+My Quote,Moja ponuda
+You have no items in your quote.,Nemate proizvoda u Vašoj ponudi
+Thank you for your interest!,Hvala vam na vašem interesu!
+Your Quote Request # is: ,Vaš zahtjev za ponudu # je: 
+Continue Shopping,Nastavite s kupnjom
+Items Quote,Proizvod iz ponude
+Re-submit Quote,Ponovo pošaljite ponudu
+Required Shipping address,Potrebna adresa za dostavu
+You added %1 to your quote.,Dodali ste %1 vašoj ponudi.
+Clear Quote,Očisti ponudu
+Update Quote,Ažuriraj ponudu
+Quote Summary,Sažetak ponude
+Login to request a Quote,Prijavite se da biste zatražili ponudu
+Quote,Ponuda
+This product is disabled.,Ovaj je proizvod onemogućen.
+Buy %1 for price %2,Kupi %1 za cijenu %2
+Item ordered qty,Proizvod naručen po količini
+%1 with %2 discount each,%1 sa %2 popustom svakog
+%1 for %2,%1 za %2
+* - Enter custom price including tax,* - Unesite prilagođenu cijenu s porezom
+* - Enter custom price excluding tax,* - Unesite prilagođenu cijenu bez poreza
+Configure,Konfiguriraj
+This product does not have any configurable options,Ovaj proizvod nema mogućnosti konfiguriranja
+Shipping Method,Metoda isporuke
+Information,Informacija
+Manaquote Information,Manaquote informacije
+Shipping Incl. Tax (%1),Dostava s porezom (%1)
+Shipping Excl. Tax (%1),Dostava bez poreza (%1)
+Add Selected Product(s) to Quote,Dodajte odabrane proizvode u ponudu
+Form Information,Informacije o obrascu
+We can't get the quote instance right now.,Trenutno ne možemo dobiti instancu ponude.
+Are you sure you want to send a confirmation email to customerđ,Jeste li sigurni da želite poslati e-poštu s potvrdom kupcuđ
+Send to Customer,Pošaljite kupcu
+Are you sure you want to reject this quoteđ,Jeste li sigurni da želite odbiti ovu ponuduđ
+Create Order,Kreiraj narudžbu
+Print,Printaj
+Quote # %1 %2 | %3,Ponuda # %1 %2 | %3
+My Quotes,Moje Ponude
+Grand Total (Excl.Tax),Ukupno (bez poreza)
+Grand Total (Incl.Tax),Ukupno (s porezom)
+Add,Dodaj
+We can't find a quote to create order.,Ne možemo pronaći ponudu da kreiramo narudžbu.
+Request4Quote,Request4Quote
+Edit Quote,Uredi ponudu
+This Quote no longer exists,Ova ponuda više ne postoji.
+Manage Quote,Uredi ponudu
+You rejected the quote,Odbili ste ponudu
+We can't find a quote.,Ne možemo pronaći ponudu.
+You saved the quote,Spremili ste ponudu
+"You updated the quote, has send email to customer",Ažurirali ste ponudu i poslali e-poštu kupcu
+Guest checkout is disabled.,Odjava gostiju je onemoguđena.
+Quote Checkout,Naplata ponude
+Out of stock,Nema na skladištu
+The quote has been cancelled!,Ponuda otkazana!
+Can't cancel this quote!,Ponuda ne može biti otkazana!
+The quote item isn't found. Verify the item and try again.,Stavka iz ponude nije pronađena. Potvrdite stavku i pokušajte ponovo.
+We cannot configure the product.,Ne možemo konfigurirati proizvod.
+Can not moved to quote because there are item(s) that are not allowed to add to quote in cart,Nije moguće premjestiti u ponudu jer postoje stavke koje nije dopušteno dodati u ponudu u košarici
+Can't move items to quote!,Stavke se ne mogu premjestiti u ponudu!
+%1 items has been move to quote %2,%1 proizvod je prebačen u ponudu %2
+Success Page,Uspješno
+%1 was updated in your quote extension.,%1 je ažurirano u vašem produžetku ponude.
+We can't update the item right now.,Trenutno ne možemo ažurirati stavku.
+We can't update the shopping cart.,Ne možemo ažurirati košaricu.
+The request quote id no longer exists.,ID ponude više ne postoji.
+You resubmit the quote,Ponovo predajete ponudu
+This Quote can't re-submit.,Ova ponuda ne može se ponovno poslati.
+Could not save the quote version,Nije moguće spremiti verziju ponude
+Qty: ,Količina: 
+Price: ,Cijena: 
+Comment: ,Komentar: 
+Unable to serialize value.,Nije moguća serijska vrijednost
+Unable to unserialize value.,Nije moguća ne serijska vrijednost
+Pending,U tijeku
+Ordered,Naručeno
+Updated,U tijeku
+Rejected,Odbijeno
+Closed,Zatvoreno
+Resubmitted,Ponovo poslano
+Expired,Isteklo
+The order object is not specified.,Nalog nije naveden.
+Excl. Tax,Bez PDV
+Incl. Tax,Sa PDV
+Products,Proizvodi
+Quote #,Ponuda #
+Quote Date: ,Ponuda Datum: 
+Quote Comment: ,Ponuda Komentar: 
+Ship to:,Isporučiti na:
+Shipping Method:,Metoda dostave:
+Total Shipping Charges,Ukupni troškovi dostave
+The Quote does not exist.,Ponuda ne postoji.
+Current customer does not have an active cart.,Trenutni kupac nema aktivnu košaricu.
+The shipping address is missing. Set the address and try again.,Adresa za dostavu nedostaje. Postavite adresu i pokušajte ponovo.
+The quote cannot placed. Verify the input data and try again.,Ponuda se ne može naručiti. Provjerite ulazne podatke i pokušajte ponovo.
+The shipping method can't be set for an empty cart. Add an item to cart and try again.,Način isporuke se ne može se postaviti ako je košarica prazna. Dodajte predmet u košaricu i pokušajte ponovo.
+The product does not exist.,Proizvod ne postoji.
+We adjusted product quantities to fit the required increments.,Koliđčne proizvoda prilagodili smo potrebnim koracima.
+Quantity was recalculated from %1 to %2',Količina je preračunata sa% 1 na% 2 '
+Load customer quote extension error,Učitajte pogrešku proširenja ponude korisnika
+Add to Quote,Dodaj na ponudu
+Request for Quote,Zahtjev za ponudu
+Request for Quote Customer Group,Zahtjev za ponudu grupe kupaca
+Sub Total,Cijena totalna
+Cancel,Otkaži
+Expire At: %1,Ističe: %1
+Quote Date: %1,Datum ponude: %1
+Current Total: %1,Trenutno ukupno: %1
+Shipping Address,Adresa isporuke
+Created Date,Kreiraj datum
+Last Update,Zadnje ažuriranje
+Current Total,Trenutno ukupno
+Actions,Akcije
+Move all to Quote,Premjesti sve u ponudu
+Customer Comment,Komentar kupca
+Admin Comment,Komentar administratora
+Quote Items,Proizvodi ponude
+The shipping method is missing. Select the shipping method and try again.,Nedostaje način otpreme. Odaberite način dostave i pokušajte ponovo.
+Items in Cart,Predmeti u košarici
+Close,Zatvori
+Proceed to Checkout Quote,Nastavite do provjere ponude
+Edit item,Uredi proizvod
+Remove item,Ukloni proizvod
+Remove,Ukloni
+Update,Ažuriranje
+We can't get the quote instance right now.,Trenutno ne možemo dobiti instancu ponude.
+Please correct the parent block for this block.,Ispravite nadređeni blok za ovaj blok.
+We can't find a quote to create order.,Ne možemo pronaći ponudu za stvaranje narudžbe.
+We can't remove the item.,Ne možemo ukloniti proizvod.
+We can't update the item right now.,Trenutno ne možemo ažurirati stavku.
+We can't update the shopping cart.,Ne možemo ažurirati košaricu.
+%1 doesn't extend \Bss\QuoteExtension\CustomerData\ItemInterface,%1 ne produžuje \Bss\QuoteExtension\CustomerData\ItemInterface
+Customer ,Kupac
+We can't send the email quote right now.,Trenutno ne možemo poslati ponudu e-pošte.
+Invalid file!,Nevažeća datoteka!
+Log version ,Verzija dnevnika
+Date: ,Datum:
+Quote Status,Status ponude
+Quote # %1,Ponuda # %1
+Quote Date,Datum ponude
+Quote Date (%1),Datum ponude (%1)
+Quote Currency:,Valuta ponude:
+Quotes,Ponude
+Add notes for this quote item,Dodajte napomene za ovu stavku ponude
+"Click <a href=""%1"">here</a> to continue shopping.","Kliknite <a href=""%1"">ovdje</a> za nastavak kupovine."
+Customer Note,Napomena kupca
+Loading...,Učitavam...
+Are you sure you want to cancel this quoteđ,Jeste li sigurni da želite otkazati ovu ponuduđ
+Quote Cancel,Otkažite ponudu
+Are you sure you would like to remove this item from the quoteđ,Jeste li sigurni da želite ukloniti ovaj proizvod iz ponudeđ
+Status,Status
+View Quote,Pogledajte ponudu
+Action,Akcija
+Item in Quote,Proizvod u ponudi
+Items in Quote,Proizvodi u ponudi
+Recently added item(s),Nedavno dodani artikli
+View and Edit Quote,Pogledajte i uredite ponudu
+Request4Quote Other Page Config,Request4Quote Konfiguracija druge stranice
+Request4Quote Shipping,Request4Quote Isporuka
+Enabled,Odobreno
+Method Name,Naziv metode
+Title,Naslov
+Displayed Error Message,Prikazana poruka o pogrešci
+Sort Order,Složi narudžbu
+Manage Quote Requests,Upravljanje zahtjevima za ponude
+General,Općenito
+Enable Add to Quote for All Products,Omogući Dodaj u ponudu za sve proizvode
+Apply to Customer Groups,Prijavite se na grupe kupaca
+Minimum Quote Amount per Customer Group,Minimalni iznos ponude po grupi kupaca
+Default Day(s) to Quote Expiration,Zadani dan za istek ponude
+Send Reminder ... Day(s) before Expiration,Pošaljite podsjetnik ... Dan(a) prije isteka
+Disable Comment per Quote Item,Onemogući komentar po stavci citata
+Disable Resubmit Action,Onemogući ponovnu akciju
+Icon Mini Quote,Mini ikona ponude
+Auto Logging For Customer,Automatska prijava za kupca
+Apply Default Qty Conditions for Quoted Products,Primijenite zadane uvjete koliđine za proizvode iz ponde
+"Email template chosen based on theme fallback when ""Default"" option is selected.","Predložak e-pošte odabran je na temelju zamjenske teme kada je odabrana opcija ""Zadana""."
+FPT,FPT
+Shipping & Handling,Dostava i rukovanje
+Adjustment Refund,Podešavanje povrata novaca
+Adjustment Fee,Naknada za prilagodbu
+Request for Quote Enable,Omoguđen zahtjev za ponudu
+Increment Id,Prirast Id
+Customer Id,Id kupca
+Customer Email,Email kupca
+Created At,Kreirano kod
+Updated At,Ažuirirano kod
+Save Address,Spremi adresu
+For delivery questions.,Za pitanja dostave.
+(Excl. Tax),(Iskljuđi porez)
+(Incl. Tax),(Ukljuđi porez)
+Order Total Excl. Tax,Ukupna narudžba isključujući Porez
+Order Total Incl. Tax,Ukupna narudžba uključujući Porez
+Your quote request has been received!,Vaš zahtjev za ponudu je primljen!
+Edit,Uredi
+Ship Here,Isporučiti ovdje
+We can't add this item to your quote right now.,Trenutno ne možemo dodati ovu stavku u vašu ponudu.
+"We don't have as many ""%1"" as you requested","Nemamo toliko ""% 1"" koliko ste zatražili"
+No items add to your quote.,Nijedna stavka nije dodana u vašu ponudu.
+Minimum quote amount is [min_amount],Minimalni iznos ponude je [min_amount]
+Address Information,Informacija o adresi
+No Shipping Address!,Nema adrese za dostavu!
+Total %1 product(s),Ukupno% 1 proizvoda
+Hide Price,Sakrij cijenu
+Update Items and Quantities,Ažurirajte stavke i količine
+Click to change shipping method,Kliknite za promjenu načina slanja
+"Sorry, no quotes are available for this quote.","Nažalost, za ovu ponudu nisu dostupni ponude."
+Get shipping methods and rates,Doznajte načine otpreme i cijene
+You don't need to select a shipping method.,Ne morate odabrati način dostave.
+records found,pronaćeni zapisi
+selected,odabrano
+Export to:,Izvoz u:
+per page,po stranici
+Previous page,Prijašnja stranica
+Next page,Sljedeća stranica
+Add Products,Dodaj proizvod
+Back,Natrag
+SubTotal:,Ukupno:
+Submit Quote Request,Pošaljite zahtjev za ponudu
+You have updated %1 in your quote.,Ažurirali ste% 1 u svojoj ponudi.
+Sub User name,Pod korisničko ime
+Sub User email,Pod korisnički Email
+Created By,Kreirano od
+Customer Name,Ime kupca

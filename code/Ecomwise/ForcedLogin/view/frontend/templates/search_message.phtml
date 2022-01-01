@@ -1,0 +1,14 @@
+<script>
+ require([
+    'jquery',
+    'mage/mage'
+], function ($, mage) {
+    'use strict';
+    <?php 
+    if(!$block->isLoggedIn() && $block->getForcedLoginStatus()){ ?>
+        var searchDiv = document.getElementsByClassName("amsearch-products").item(0),
+        message = $.mage.__('Please login');
+        searchDiv.innerHTML = message;
+    <?php } ?>
+});
+</script>

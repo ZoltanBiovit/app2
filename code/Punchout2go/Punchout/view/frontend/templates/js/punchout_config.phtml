@@ -1,0 +1,15 @@
+<?php
+    /** @var \Punchout2go\Punchout\Block\Session $this */
+
+$helper = $this->getHelper();
+
+?>
+<script type="text/x-magento-init">
+    {
+        "*" :
+            {
+                "punchout" : <?php echo $this->getConfigJson(); ?>
+            }
+    }
+</script>
+

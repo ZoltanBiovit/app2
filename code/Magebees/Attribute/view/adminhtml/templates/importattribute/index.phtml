@@ -1,0 +1,142 @@
+    <div class="admin__old">
+        <div class="main-col" id="container">
+        <div id="result"></div><br/>
+            <div id="messages">
+                <div class="messages">
+                    <div class="message message-notice notice">
+                        <div>
+                            Make sure that data encoding in the file is consistent and saved in CSV (comma separated only) with supported encodings (UTF-8 or ANSI).
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="messages">
+                <div class="messages">
+                    <div class="message message-notice notice">
+                        <div>
+                            Note: If you are going to Import Attributes with its swatch images then make sure you put images in <b>your store directory/pub/media/attribute/swatch/cws</b> folder.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="messages">
+                <div class="messages">
+                    <div class="message message-notice notice">
+                        <div>
+                            Note: Before import the product attributes please refere sample csv files.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div id="import_content"></div>
+            <div class="entry-edit form-inline">
+                <form method="post" action="<?php //echo $block->getUrl('*/*/import') ?>" id="import_edit_form" enctype="multipart/form-data">
+            
+                    <input name="form_key" type="hidden" value="<?php echo $block->getFormKey() ?>" />
+            
+                    <fieldset id="base_fieldset" class="fieldset admin__fieldset ">
+                        <legend class="admin__legend legend">
+                            <span>Import Products Attributes Settings</span>
+                        </legend><br>
+                        <div class="admin__field field field-entity ">
+                            <div class="admin__field-control control">
+                            <label for="filename" class="label admin__field-label"><span>Select File to Import</span></label>
+                            <input type="file" class="input-file required-entry _required" title="Select File to Import" value=""  name="filename" id="filename" >
+                            </div>
+                        </div>
+                    </fieldset>
+                <!--<button type="submit" id="import_attr" class="action- scalable"><span>Click on for Import</span></button>-->
+                     <button id="import_attr" type="button" class="action- scalable"><span>Click on For Import</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <?php $import_url = $block->getUrl('*/*/import'); ?>
+    <script type="text/javascript">
+        require([
+			'jquery',
+			'Magento_Ui/js/modal/modal'
+   		 ],
+			function(jQuery,modal) {
+
+				var options = {
+				type: 'popup',
+				responsive: true,
+				innerScroll: true,
+				title: 'Import',
+				buttons: [{
+					text: jQuery.mage.__('Close'),
+					class: '',
+					click: function () {
+						this.closeModal();
+						window.location= "<?php echo $this->getUrl('attribute/importattribute/index') ?>";	
+					}
+				}],
+
+			};	       							
+			
+			
+            var formkey = "<?php echo $block->getFormKey() ?>";
+            var importurl = "<?php echo $import_url ?>";
+            
+            jQuery('#import_edit_form').on('click', '#import_attr', function(event){
+
+                var filename = jQuery('#filename').val();
+                if(filename.toLowerCase().lastIndexOf(".csv")==-1)     {
+                    alert("Please upload only .csv extention file");
+                    return false;
+                }
+                if(filename) {
+					
+					var popup = modal(options, jQuery('#import_content')); //initialize popup
+					jQuery('#import_content').modal('openModal');
+					jQuery(".action-close").hide();
+                   
+					jQuery('#import_content').html('<img src="<?php echo $this->getViewFileUrl("images/loader-1.gif"); ?>" /><br\> Import Process Starts.');
+					
+					importRecursive(1);
+                }else{
+                    alert("Please Upload File");
+                }
+            })
+        }
+        );
+		
+		
+		function importRecursive(next,imported=0){
+	
+			var formkey = "<?php echo $block->getFormKey() ?>";
+            var importurl = "<?php echo $import_url ?>";
+		    var file = document.getElementById("filename");
+			var formData = new FormData();
+			formData.append("filename", file.files[0]);
+			formData.append('form_key', formkey);
+			formData.append('pointer_next', next);
+			var filename = jQuery('#filename').val();
+    	
+			jQuery.ajax({
+				url : importurl,
+				showLoader:false,
+				contentType: false,
+				processData: false,
+				data: formData,                         
+				type: 'post',
+				success: function(response){
+	
+					var pointer_next = response.pointer_last;
+					imported = imported + response.count;
+						if(response.fail){
+							window.location= "<?php echo $this->getUrl("attribute/importattribute/index"); ?>";	
+						}else if(!response.no_more){
+							jQuery('#import_content').html('<img src="<?php echo $this->getViewFileUrl("Magebees_Categories::images/loader-1.gif"); ?>" /><br\>'+imported+' Attributes are Imported.');
+							importRecursive(pointer_next,imported);
+						}else{
+							jQuery('#import_content').html('Attributes were successfully Imported.');
+							setTimeout(function(){jQuery('#import_content').modal('closeModal');window.location="<?php echo $this->getUrl("attribute/importattribute/index"); ?>" }, 5000);
+								
+						}			
+				  }
+			});
+   	}
+    </script>
+
